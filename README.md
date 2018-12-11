@@ -16,4 +16,7 @@
 
 google團隊提供了GLUE data中幾個資料集的fine-tune方式(在程式碼部分也寫好前處理的部分)，然而若要應用到自己的資料內的話需要自己改寫Processor。
 
-在此使用Imdb sentiment analysis dataset作為範例，並稍微修改原始碼，呈現應如何應用此模型到自己的資料中。 (不過這只是單句分類作業，還有另外一塊沒有涵蓋到)
+在此使用[Imdb sentiment analysis dataset](http://ai.stanford.edu/~amaas/data/sentiment/)作為範例，並稍微修改原始碼，呈現應如何應用此模型到自己的資料中。 (不過這只是單句分類作業，還有另外一塊沒有涵蓋到)  採取的方式是兩階段式的資料整理，首先先將訓練與測試資料儲存為tf_record格式，接著再直接包成input_fn丟入tf.contrib.tpu.TPUEstimator作模型訓練/測試。後續也會再寫一個直接修改Processor，讓訓練與驗證流程直接可在terminal上執行。
+
+
+-- <cite>Andrew L. Maas, Raymond E. Daly, Peter T. Pham, Dan Huang, Andrew Y. Ng, and Christopher Potts. (2011). Learning Word Vectors for Sentiment Analysis. The 49th Annual Meeting of the Association for Computational Linguistics (ACL 2011).</cite>
